@@ -362,6 +362,9 @@
     <Reference Include="Mono.Cecil">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\PackageCache\com.unity.nuget.mono-cecil@1.11.4\Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="Valve.Newtonsoft.Json">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Assets\SteamVR\Input\Plugins\JSON.NET\Valve.Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
     </Reference>
@@ -749,20 +752,23 @@
     <Reference Include="Unity.Recorder.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Recorder.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.Management">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.XR.Management.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Jobs">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Jobs.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Runtime">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.AI.Navigation">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Postprocessing.Runtime">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Postprocessing.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Burst.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Burst.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.AI.Navigation">
-      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.AI.Navigation.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.dll</HintPath>
@@ -785,14 +791,20 @@
     <Reference Include="Unity.RenderPipelines.Core.ShaderLibrary">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Core.ShaderLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.XR.Management.Editor">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.XR.Management.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Collections">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Collections.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Collections.Editor">
-      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
+    <Reference Include="Unity.XR.OpenVR">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.XR.OpenVR.dll</HintPath>
     </Reference>
     <Reference Include="PPv2URPConverters">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\PPv2URPConverters.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Collections.Editor">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
@@ -824,6 +836,9 @@
     <Reference Include="Unity.RenderPipelines.Universal.Runtime">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.RenderPipelines.Universal.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.XR.LegacyInputHelpers">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Burst">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Burst.dll</HintPath>
     </Reference>
@@ -833,17 +848,26 @@
     <Reference Include="Unity.ShaderGraph.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.ShaderGraph.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualStudio.Editor">
-      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    <Reference Include="UnityEditor.SpatialTracking">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Recorder.Base">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualStudio.Editor">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.SpatialTracking">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEngine.SpatialTracking.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEditor.XR.LegacyInputHelpers">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEditor.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipeline.Universal.ShaderLibrary">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.RenderPipeline.Universal.ShaderLibrary.dll</HintPath>
@@ -856,6 +880,9 @@
     </Reference>
     <Reference Include="Unity.InputSystem.ForUI">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.InputSystem.ForUI.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.XR.OpenVR.Editor">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.XR.OpenVR.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.MemoryProfiler.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.MemoryProfiler.Editor.dll</HintPath>
@@ -875,11 +902,11 @@
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Searcher.Editor">
-      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Searcher.Editor">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.ScriptableBuildPipeline.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.ScriptableBuildPipeline.Editor.dll</HintPath>
@@ -893,6 +920,22 @@
     <ProjectReference Include="Unity.Toaru.UI.csproj">
       <Project>{69647599-8753-90a4-6a58-8ab3f7a0a294}</Project>
       <Name>Unity.Toaru.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR.csproj">
+      <Project>{85052764-e9fc-55e0-090e-39853ce2a38a}</Project>
+      <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
+      <Project>{88c40bb1-6914-39b8-b003-4373b0256ab4}</Project>
+      <Name>SteamVR_Windows_EditorHelper</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Input_Editor.csproj">
+      <Project>{6111856b-3fde-fc84-f09c-93bc6b810092}</Project>
+      <Name>SteamVR_Input_Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Editor.csproj">
+      <Project>{21c9c775-d811-5695-4f1c-4514e67934e2}</Project>
+      <Name>SteamVR_Editor</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

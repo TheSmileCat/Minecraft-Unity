@@ -9,5 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SinglePlayer.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects:
+    Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 273da3e400e6b83478ad460462e0dff4,
+      type: 2}
     com.unity.addressableassets: {fileID: 11400000, guid: f47b1c3a22b2be1428abf4053f62ec89,
+      type: 2}
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 7448ffcc0add58c45b601603b5514aac,
       type: 2}
