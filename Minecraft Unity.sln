@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamVR_Editor", "SteamVR_E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SteamVR_Input_Editor", "SteamVR_Input_Editor.csproj", "{6111856b-3fde-fc84-f09c-93bc6b810092}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{563a2ecf-8216-2da7-dfc9-70cc3049d8e9}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Toaru.UI", "Unity.Toaru.UI.csproj", "{69647599-8753-90a4-6a58-8ab3f7a0a294}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{563a2ecf-8216-2da7-dfc9-70cc3049d8e9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Toaru.UI.Editor", "Unity.Toaru.UI.Editor.csproj", "{703dbec7-580c-b83a-b464-45ade5b985af}"
 EndProject
@@ -32,10 +32,10 @@ Global
 		{21c9c775-d811-5695-4f1c-4514e67934e2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6111856b-3fde-fc84-f09c-93bc6b810092}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6111856b-3fde-fc84-f09c-93bc6b810092}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{563a2ecf-8216-2da7-dfc9-70cc3049d8e9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{563a2ecf-8216-2da7-dfc9-70cc3049d8e9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69647599-8753-90a4-6a58-8ab3f7a0a294}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{69647599-8753-90a4-6a58-8ab3f7a0a294}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{563a2ecf-8216-2da7-dfc9-70cc3049d8e9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{563a2ecf-8216-2da7-dfc9-70cc3049d8e9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{703dbec7-580c-b83a-b464-45ade5b985af}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{703dbec7-580c-b83a-b464-45ade5b985af}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88c40bb1-6914-39b8-b003-4373b0256ab4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
