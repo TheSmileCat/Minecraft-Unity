@@ -25,8 +25,7 @@ namespace Minecraft.Editor.Configurations.MCConfigEditor
         public static readonly float RightViewMinWidth = 350;
         public static readonly float WindowMinHeight = 150;
         public static readonly float WindowMinWidth = LeftViewMinWidth + RightViewMinWidth;
-        public static readonly string[] ConfigFiles = new string[]
-        {
+        public static readonly string[] ConfigFiles = {
             "block_table.json",
             "block_mesh_table.json",
             "block_texture_table.json",
@@ -40,7 +39,7 @@ namespace Minecraft.Editor.Configurations.MCConfigEditor
 
 
         #region Serialized Data
-        [SerializeField] private string m_ConfigFolder;
+        [SerializeField] private string m_ConfigFolder = "Minecraft/Configs/";
         [SerializeField] private WindowGUIMode m_GUIMode;
         [SerializeField] private SplittedViewRects m_SplittedRects;
         [SerializeField] private TreeViewState m_TreeViewState;
