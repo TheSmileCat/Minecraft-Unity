@@ -1,6 +1,6 @@
 using System;
 using System.Reflection;
-using Minecraft.Assets;
+using Minecraft.Scripts.Assets;
 using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;

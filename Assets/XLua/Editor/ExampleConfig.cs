@@ -11,6 +11,7 @@ using System;
 using XLua;
 using System.Reflection;
 using System.Linq;
+using Minecraft.XLua.Src;
 
 //配置的详细介绍请看Doc下《XLua的配置.doc》
 public static class ExampleConfig

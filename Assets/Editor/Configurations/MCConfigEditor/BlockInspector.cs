@@ -1,13 +1,13 @@
 using System.Collections.Generic;
-using Minecraft.Assets;
-using Minecraft.Configurations;
-using Minecraft.PhysicSystem;
-using Minecraft.Rendering;
+using Minecraft.Scripts.Assets;
+using Minecraft.Scripts.Configurations;
+using Minecraft.Scripts.PhysicSystem;
+using Minecraft.Scripts.Rendering;
 using MinecraftEditor.Assets;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
-using ArrayUtility = Minecraft.Utils.ArrayUtility;
+using ArrayUtility = Minecraft.Scripts.Utils.ArrayUtility;
 
 namespace MinecraftEditor.Configurations.MCConfigEditor
 {

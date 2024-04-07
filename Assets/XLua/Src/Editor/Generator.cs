@@ -18,6 +18,8 @@ using System.Reflection;
 using System.Text;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using Minecraft.XLua.Src;
+using Minecraft.XLua.Src.TemplateEngine;
 
 namespace CSObjectWrapEditor
 {
@@ -31,7 +33,7 @@ namespace CSObjectWrapEditor
 
         static GeneratorConfig()
         {
-            foreach(var type in (from type in XLua.Utils.GetAllTypes()
+            foreach(var type in (from type in Utils.GetAllTypes()
             where type.IsAbstract && type.IsSealed
             select type))
             {
@@ -594,7 +596,7 @@ namespace CSObjectWrapEditor
             LuaFunction template;
             if (!templateCache.TryGetValue(templateAsset.name, out template))
             {
-                template = XLua.TemplateEngine.LuaTemplate.Compile(luaenv, templateAsset.text);
+                template = LuaTemplate.Compile(luaenv, templateAsset.text);
                 templateCache[templateAsset.name] = template;
             }
 
@@ -608,7 +610,7 @@ namespace CSObjectWrapEditor
 
             try
             {
-                string genCode = XLua.TemplateEngine.LuaTemplate.Execute(template, type_info);
+                string genCode = LuaTemplate.Execute(template, type_info);
                 //string filePath = save_path + type.ToString().Replace("+", "").Replace(".", "").Replace("`", "").Replace("&", "").Replace("[", "").Replace("]", "").Replace(",", "") + file_suffix + ".cs";
                 textWriter.Write(genCode);
                 textWriter.Flush();
@@ -1056,7 +1058,7 @@ namespace CSObjectWrapEditor
         {
             public bool Equals(Type x, Type y)
             {
-                return XLua.Utils.IsParamsMatch(x.GetMethod("Invoke"), y.GetMethod("Invoke"));
+                return Utils.IsParamsMatch(x.GetMethod("Invoke"), y.GetMethod("Invoke"));
             }
             public int GetHashCode(Type obj)
             {
@@ -1639,7 +1641,7 @@ namespace CSObjectWrapEditor
 #if !XLUA_GENERAL
         static void callCustomGen()
         {
-            foreach (var method in (from type in XLua.Utils.GetAllTypes()
+            foreach (var method in (from type in Utils.GetAllTypes()
                                from method in type.GetMethods(BindingFlags.Static | BindingFlags.Public)
                                where method.IsDefined(typeof(GenCodeMenuAttribute), false) select method))
             {
@@ -1659,13 +1661,13 @@ namespace CSObjectWrapEditor
 #endif
             var start = DateTime.Now;
             Directory.CreateDirectory(GeneratorConfig.common_path);
-            GetGenConfig(XLua.Utils.GetAllTypes());
+            GetGenConfig(Utils.GetAllTypes());
             luaenv.DoString("require 'TemplateCommon'");
             var gen_push_types_setter = luaenv.Global.Get<LuaFunction>("SetGenPushAndUpdateTypes");
             gen_push_types_setter.Call(GCOptimizeList.Where(t => !t.IsPrimitive && SizeOf(t) != -1).Concat(LuaCallCSharp.Where(t => t.IsEnum)).Distinct().ToList());
             var xlua_classes_setter = luaenv.Global.Get<LuaFunction>("SetXLuaClasses");
-            xlua_classes_setter.Call(XLua.Utils.GetAllTypes().Where(t => t.Namespace == "XLua").ToList());
-            GenDelegateBridges(XLua.Utils.GetAllTypes(false));
+            xlua_classes_setter.Call(Utils.GetAllTypes().Where(t => t.Namespace == "XLua").ToList());
+            GenDelegateBridges(Utils.GetAllTypes(false));
             GenEnumWraps();
             GenCodeForClass();
             GenLuaRegister();
@@ -1725,7 +1727,7 @@ namespace CSObjectWrapEditor
             }
 
             process.WaitForExit();
-            GetGenConfig(XLua.Utils.GetAllTypes());
+            GetGenConfig(Utils.GetAllTypes());
             callCustomGen();
             AssetDatabase.Refresh();
         }
@@ -1741,9 +1743,9 @@ namespace CSObjectWrapEditor
 
         public static void CustomGen(string template_src, GetTasks get_tasks)
         {
-            GetGenConfig(XLua.Utils.GetAllTypes());
+            GetGenConfig(Utils.GetAllTypes());
 
-            LuaFunction template = XLua.TemplateEngine.LuaTemplate.Compile(luaenv,
+            LuaFunction template = LuaTemplate.Compile(luaenv,
                 template_src);
             foreach (var gen_task in get_tasks(luaenv, new UserConfig() {
                 LuaCallCSharp = LuaCallCSharp,
@@ -1758,7 +1760,7 @@ namespace CSObjectWrapEditor
 
                 try
                 {
-                    string genCode = XLua.TemplateEngine.LuaTemplate.Execute(template, gen_task.Data);
+                    string genCode = LuaTemplate.Execute(template, gen_task.Data);
                     gen_task.Output.Write(genCode);
                     gen_task.Output.Flush();
                 }

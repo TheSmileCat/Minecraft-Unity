@@ -1,4 +1,4 @@
-using Minecraft.Configurations;
+using Minecraft.Scripts.Configurations;
 using MinecraftEditor.Assets;
 using UnityEditor;
 using UnityEngine;

@@ -9,6 +9,8 @@ using UnityEditor;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
+using Minecraft.XLua.Src;
+using Minecraft.XLua.util;
 
 #if UNITY_2020_2_OR_NEWER
 using UnityEditor.AssetImporters;
@@ -103,7 +105,7 @@ public class LuaImporter : ScriptedImporter
         // TODO: your encode function, like xxtea
         if(encode)
         {
-            data = Security.XXTEA.Encrypt(data, LuaAsset.LuaDecodeKey);
+            data = XXTEA.Encrypt(data, LuaAsset.LuaDecodeKey);
         }
         
         asset.data = data;
@@ -165,7 +167,7 @@ public class LuaAssetEditor :  UnityEditor.Editor
         if (mTarget.encode && decode)
         {
             // TODO: your decode function
-            text = Encoding.UTF8.GetString(Security.XXTEA.Decrypt(mTarget.data, LuaAsset.LuaDecodeKey));
+            text = Encoding.UTF8.GetString(XXTEA.Decrypt(mTarget.data, LuaAsset.LuaDecodeKey));
         }else
         {
             text = Encoding.UTF8.GetString(mTarget.data);

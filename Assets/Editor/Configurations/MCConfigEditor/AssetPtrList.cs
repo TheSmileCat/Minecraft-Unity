@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Minecraft.Assets;
+using Minecraft.Scripts.Assets;
 using MinecraftEditor.Assets;
 using Newtonsoft.Json;
 using UnityEngine;

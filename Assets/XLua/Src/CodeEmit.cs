@@ -7,23 +7,23 @@
 */
 
 #if (UNITY_EDITOR || XLUA_GENERAL) && !NET_STANDARD_2_0
-using System.Collections.Generic;
-using System.Reflection.Emit;
-using System.Reflection;
-using System;
-using System.Linq;
 
 #if USE_UNI_LUA
 using LuaAPI = UniLua.Lua;
 using RealStatePtr = UniLua.ILuaState;
 using LuaCSFunction = UniLua.CSharpFunctionDelegate;
 #else
-using LuaAPI = XLua.LuaDLL.Lua;
+using LuaAPI = Minecraft.XLua.Src.Lua;
 using RealStatePtr = System.IntPtr;
-using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
+using LuaCSFunction = Minecraft.XLua.Src.lua_CSFunction;
 #endif
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using System.Reflection.Emit;
 
-namespace XLua
+namespace Minecraft.XLua.Src
 {
     public class CodeEmit
     {

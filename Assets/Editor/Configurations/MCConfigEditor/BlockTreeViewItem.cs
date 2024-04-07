@@ -1,4 +1,4 @@
-using Minecraft.Configurations;
+using Minecraft.Scripts.Configurations;
 using UnityEditor.IMGUI.Controls;
 
 namespace MinecraftEditor.Configurations.MCConfigEditor

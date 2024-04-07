@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Minecraft.Lua;
+using Minecraft.Scripts.Lua;
+using Minecraft.XLua.Src;
 using XLua;
 
 namespace MinecraftEditor.Lua

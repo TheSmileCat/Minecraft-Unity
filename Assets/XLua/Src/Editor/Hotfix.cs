@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Linq;
 using System.IO;
 using System.Text.RegularExpressions;
+using Minecraft.XLua.Src;
 
 #if XLUA_GENERAL
 using Mono.Cecil;

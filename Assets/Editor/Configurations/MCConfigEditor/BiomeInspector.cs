@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Minecraft.Configurations;
+using Minecraft.Scripts.Configurations;
 using UnityEditor;
 using UnityEngine;
 

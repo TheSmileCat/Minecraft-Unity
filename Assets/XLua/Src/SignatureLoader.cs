@@ -1,12 +1,13 @@
-﻿#if !UNITY_WSA || UNITY_EDITOR
+﻿
+using System;
 using System.Security.Cryptography;
+#if !UNITY_WSA || UNITY_EDITOR
 #else
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.Core;
 #endif
-using System;
 
-namespace XLua
+namespace Minecraft.XLua.Src
 {
     public class SignatureLoader
     {

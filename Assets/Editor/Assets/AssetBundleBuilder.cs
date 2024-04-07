@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Minecraft.Assets;
+using Minecraft.Scripts.Assets;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEngine;

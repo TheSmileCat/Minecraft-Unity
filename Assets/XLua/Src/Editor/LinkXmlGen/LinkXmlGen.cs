@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Linq;
 using CSObjectWrapEditor;
+using Minecraft.XLua.Src;
 
 public class LinkXmlGen : ScriptableObject
 {

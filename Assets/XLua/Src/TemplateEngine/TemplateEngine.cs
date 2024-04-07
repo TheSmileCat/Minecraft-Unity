@@ -11,20 +11,17 @@ using LuaAPI = UniLua.Lua;
 using RealStatePtr = UniLua.ILuaState;
 using LuaCSFunction = UniLua.CSharpFunctionDelegate;
 #else
-using LuaAPI = XLua.LuaDLL.Lua;
+using LuaAPI = Minecraft.XLua.Src.Lua;
 using RealStatePtr = System.IntPtr;
-using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
+using LuaCSFunction = Minecraft.XLua.Src.lua_CSFunction;
 #endif
-
 using System;
-using System.Linq;
-using System.Text.RegularExpressions;
 using System.Collections.Generic;
-using System.Collections;
+using System.Linq;
 using System.Text;
-using XLua;
+using System.Text.RegularExpressions;
 
-namespace XLua.TemplateEngine
+namespace Minecraft.XLua.Src.TemplateEngine
 {
     public enum TokenType
     {
@@ -195,7 +192,7 @@ namespace XLua.TemplateEngine
             return result[0].ToString();
         }
 
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        [MonoPInvokeCallback(typeof(LuaCSFunction))]
         public static int Compile(RealStatePtr L)
         {
 			string snippet = LuaAPI.lua_tostring(L, 1);
@@ -217,7 +214,7 @@ namespace XLua.TemplateEngine
             return 1;
         }
 
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        [MonoPInvokeCallback(typeof(LuaCSFunction))]
         public static int Execute(RealStatePtr L)
         {
             if (!LuaAPI.lua_isfunction(L, 1))

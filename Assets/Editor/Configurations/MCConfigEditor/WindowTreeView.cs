@@ -1,4 +1,4 @@
-using Minecraft.Configurations;
+using Minecraft.Scripts.Configurations;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using UnityEngine;

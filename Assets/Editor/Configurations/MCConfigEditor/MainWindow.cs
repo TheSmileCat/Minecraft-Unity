@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
-using Minecraft.Configurations;
+using Minecraft.Scripts.Configurations;
 using Newtonsoft.Json;
 using UnityEditor;
 using UnityEditor.IMGUI.Controls;

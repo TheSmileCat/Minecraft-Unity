@@ -1,4 +1,4 @@
-using Minecraft.InspectorExtensions;
+using Minecraft.Scripts.InspectorExtensions;
 using UnityEditor;
 using UnityEngine;
 

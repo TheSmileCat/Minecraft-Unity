@@ -13,10 +13,10 @@
 |                                                          |
 \**********************************************************/
 
-namespace Security {
-    using System;
-    using System.Text;
+using System;
+using System.Text;
 
+namespace Minecraft.XLua.util {
     public sealed class XXTEA {
         private static readonly UTF8Encoding utf8 = new UTF8Encoding();
 

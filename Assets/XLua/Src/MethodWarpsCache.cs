@@ -11,16 +11,15 @@ using LuaAPI = UniLua.Lua;
 using RealStatePtr = UniLua.ILuaState;
 using LuaCSFunction = UniLua.CSharpFunctionDelegate;
 #else
-using LuaAPI = XLua.LuaDLL.Lua;
+using LuaAPI = Minecraft.XLua.Src.Lua;
 using RealStatePtr = System.IntPtr;
-using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
+using LuaCSFunction = Minecraft.XLua.Src.lua_CSFunction;
 #endif
-
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Reflection;
 
-namespace XLua
+namespace Minecraft.XLua.Src
 {
     public class OverloadMethodWrap
     {

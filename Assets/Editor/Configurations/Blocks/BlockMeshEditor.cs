@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Minecraft.Configurations;
+using Minecraft.Scripts.Configurations;
 using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;

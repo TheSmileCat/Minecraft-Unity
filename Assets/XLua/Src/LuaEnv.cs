@@ -11,17 +11,16 @@ using LuaAPI = UniLua.Lua;
 using RealStatePtr = UniLua.ILuaState;
 using LuaCSFunction = UniLua.CSharpFunctionDelegate;
 #else
-using LuaAPI = XLua.LuaDLL.Lua;
+using LuaAPI = Minecraft.XLua.Src.Lua;
 using RealStatePtr = System.IntPtr;
-using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
+using LuaCSFunction = Minecraft.XLua.Src.lua_CSFunction;
 #endif
+using System;
+using System.Collections.Generic;
 
 
-namespace XLua
+namespace Minecraft.XLua.Src
 {
-    using System;
-    using System.Collections.Generic;
-
     public class LuaEnv : IDisposable
     {
         public const string CSHARP_NAMESPACE = "xlua_csharp_namespace";
@@ -357,7 +356,7 @@ namespace XLua
 #endif
         }
 
-        //¼æÈİAPI
+        //å…¼å®¹API
         public void GC()
         {
             Tick();
@@ -598,8 +597,8 @@ namespace XLua
 
         internal List<CustomLoader> customLoaders = new List<CustomLoader>();
 
-        //loader : CustomLoader£¬ filepath²ÎÊı£º£¨refÀàĞÍ£©ÊäÈëÊÇrequireµÄ²ÎÊı£¬Èç¹ûĞèÒªÖ§³Öµ÷ÊÔ£¬ĞèÒªÊä³öÕæÊµÂ·¾¶¡£
-        //                        ·µ»ØÖµ£ºÈç¹û·µ»Ønull£¬´ú±í¼ÓÔØ¸ÃÔ´ÏÂÎŞºÏÊÊµÄÎÄ¼ş£¬·ñÔò·µ»ØUTF8±àÂëµÄbyte[]
+        //loader : CustomLoaderï¼Œ filepathå‚æ•°ï¼šï¼ˆrefç±»å‹ï¼‰è¾“å…¥æ˜¯requireçš„å‚æ•°ï¼Œå¦‚æœéœ€è¦æ”¯æŒè°ƒè¯•ï¼Œéœ€è¦è¾“å‡ºçœŸå®è·¯å¾„ã€‚
+        //                        è¿”å›å€¼ï¼šå¦‚æœè¿”å›nullï¼Œä»£è¡¨åŠ è½½è¯¥æºä¸‹æ— åˆé€‚çš„æ–‡ä»¶ï¼Œå¦åˆ™è¿”å›UTF8ç¼–ç çš„byte[]
         public void AddLoader(CustomLoader loader)
         {
             customLoaders.Add(loader);
