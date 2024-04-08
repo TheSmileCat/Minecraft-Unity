@@ -1,8 +1,8 @@
 require "block"
 
-local playerModification = CS.Minecraft.ModificationSource.PlayerAction
+local playerModification = CS.Minecraft.Scripts.ModificationSource.PlayerAction
 local quaternionIdentity = CS.UnityEngine.Quaternion.identity
-local fluidState = CS.Minecraft.PhysicSystem.PhysicState.Fluid
+local fluidState = CS.Minecraft.Scripts.PhysicSystem.PhysicState.Fluid
 local collisionBelowFlag = CS.UnityEngine.CollisionFlags.Below
 local gravity = create_block_behaviour()
 

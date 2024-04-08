@@ -4,10 +4,10 @@ local util = require "xlua.util"
 tnt = create_block_behaviour()
 local unityTime = CS.UnityEngine.Time
 local unityColor = CS.UnityEngine.Color
-local playerModification = CS.Minecraft.ModificationSource.PlayerAction
+local playerModification = CS.Minecraft.Scripts.ModificationSource.PlayerAction
 local quaternionIdentity = CS.UnityEngine.Quaternion.identity
-local ignoreExplosionsFlag = CS.Minecraft.Configurations.BlockFlags.IgnoreExplosions
-local assetManager = CS.Minecraft.Assets.AssetManager.Instance
+local ignoreExplosionsFlag = CS.Minecraft.Scripts.Configurations.BlockFlags.IgnoreExplosions
+local assetManager = CS.Minecraft.Scripts.Assets.AssetManager.Instance
 local explosionEffectAssetName = "Assets/Minecraft Default PBR Resources/Effects/Explosion Effect.prefab"
 local waitTime = 3
 local explodeRadius = 5
@@ -106,7 +106,7 @@ function tnt:entity_on_collisions(entity, flags, context)
         local effect = CS.UnityEngine.Object.Instantiate(context.explosionEffectAsset.Asset)
         effect.transform.position = pos
 
-        local particle = CS.Minecraft.Lua.LuaUtility.GetParticleSystem(effect)
+        local particle = CS.Minecraft.Scripts.Lua.LuaUtility.GetParticleSystem(effect)
         particle:Play()
 
         entity.EnableRendering = false

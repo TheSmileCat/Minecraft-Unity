@@ -1,7 +1,7 @@
 require "block"
 
 local Vector3Int = CS.UnityEngine.Vector3Int
-local playerModification = CS.Minecraft.ModificationSource.PlayerAction
+local playerModification = CS.Minecraft.Scripts.ModificationSource.PlayerAction
 local quaternionIdentity = CS.UnityEngine.Quaternion.identity
 local fluid = create_block_behaviour()
 
