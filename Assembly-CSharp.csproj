@@ -117,6 +117,7 @@
     <Compile Include="Assets\Minecraft\Scripts\InspectorExtensions\ConditionalDisplayAttribute.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Utils\ArrayUtility.cs" />
     <Compile Include="Assets\Minecraft\Scripts\PlayerControls\FOVKick.cs" />
+    <Compile Include="Assets\Minecraft\Scripts\UserInputSystem\KeyboardInput.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Assets\AsyncAsset.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Audio\AudioManager.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Configurations\ItemData.cs" />

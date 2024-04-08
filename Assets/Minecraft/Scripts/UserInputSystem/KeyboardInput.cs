@@ -1,16 +1,17 @@
 ﻿using System;
 using Minecraft.Scripts.Configurations;
+using Minecraft.Scripts.Entities;
 using Minecraft.Scripts.PlayerControls;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace Minecraft.Scripts.Entities
+namespace Minecraft.Scripts.UserInputSystem
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BlockInteraction))]
     [RequireComponent(typeof(FluidInteractor))]
-    public class PlayerEntity : Entity
+    public class KeyboardInput : Entity
     {
         // ...fields of entity class
 

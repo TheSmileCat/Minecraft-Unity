@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Minecraft.Scripts.Configurations;
 using Minecraft.Scripts.Entities;
+using Minecraft.Scripts.UserInputSystem;
 using UnityEngine;
 using static Minecraft.Scripts.Rendering.LightingUtility;
 using static Minecraft.Scripts.WorldConsts;
@@ -137,7 +138,7 @@ namespace Minecraft.Scripts
         IEnumerator EnablePlayer()
         {
             yield return new WaitForSeconds(5);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>().enabled = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<KeyboardInput>().enabled = true;
         }
 
         public override void LightBlock(int x, int y, int z, ModificationSource source)
