@@ -54,6 +54,7 @@
     <Compile Include="Assets\Minecraft\Scripts\IWorldRWAccessor.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Lua\ILuaCallCSharp.cs" />
     <Compile Include="Assets\XLua\Src\TemplateEngine\TemplateEngine.cs" />
+    <Compile Include="Assets\Minecraft\Scripts\UserInputSystem\IUserInput.cs" />
     <Compile Include="Assets\Minecraft\Scripts\PhysicSystem\BlockRaycastHit.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Lua\LuaManager.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Lua\IHotfixable.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="Assets\Minecraft\Scripts\Utils\WorkScheduler.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Rendering\Jobs\FrustumCullingJob.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Assets\AssetBundleInfo.cs" />
+    <Compile Include="Assets\Minecraft\Scripts\UserInputSystem\VirtualRealityInput.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Rendering\SectionMeshManager.cs" />
     <Compile Include="Assets\Minecraft\Scripts\ScriptableWorldGeneration\CaveGenerator.cs" />
     <Compile Include="Assets\Minecraft\Scripts\Configurations\BlockTable.cs" />
@@ -188,29 +190,43 @@
     <None Include="Assets\Minecraft\Configs\block_texture_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\item_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\biome_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\bindings_oculus_touch.json" />
     <None Include="Assets\Minecraft\Configs\block_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\block_material_table.json" />
     <None Include="Assets\Minecraft\Configs\biome_table.json" />
     <None Include="Assets\Minecraft\Configs\item_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_vive_cosmos.json" />
     <None Include="Assets\ToaruUnity.UI\package.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\bindings_vive_cosmos_controller.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\WaterPBR.shader" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\Includes\Minecraft\Input.hlsl" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\[editor]block_texture_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\bindings_holographic_controller.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_index_hmd.json" />
     <None Include="Assets\Minecraft\Configs\block_mesh_table.json" />
     <None Include="Assets\StreamingAssets\catalog.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\block_texture_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\CommonFluidPBR.shader" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_vive_tracker_camera.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\[editor]block_material_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\[editor]block_mesh_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_holographic_hmd.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_vive_pro.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\bindings_logitech_stylus.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_vive.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\CommonFoliagePBR.shader" />
+    <None Include="Assets\StreamingAssets\SteamVR\bindings_vive_controller.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\CommonSolidPBR.shader" />
     <None Include="Assets\Minecraft\Configs\[editor]block_mesh_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\Includes\Minecraft\ShadowCaster.hlsl" />
     <None Include="Assets\Minecraft\Configs\block_material_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\actions.json" />
     <None Include="Assets\Minecraft\Configs\[editor]block_texture_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\binding_rift.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\block_table.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\Includes\Minecraft\Core.hlsl" />
     <None Include="Assets\Minecraft\Configs\[editor]block_material_table.json" />
+    <None Include="Assets\StreamingAssets\SteamVR\bindings_knuckles.json" />
     <None Include="Assets\Minecraft Default PBR Resources\Shaders\Includes\Minecraft\ScreenSpaceReflection.hlsl" />
     <None Include="Assets\XLua\CHANGELOG.txt" />
     <None Include="Assets\Minecraft Default PBR Resources\Tables\Configs\block_mesh_table.json" />
@@ -952,11 +968,11 @@
     <Reference Include="UnityEditor.SpatialTracking">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEditor.SpatialTracking.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Recorder.Base">
-      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Recorder.Base">
+      <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\Unity.Recorder.Base.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
       <HintPath>F:\Unity\Common\Minecraft Unity\Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
@@ -1021,6 +1037,10 @@
     <ProjectReference Include="SteamVR.csproj">
       <Project>{85052764-e9fc-55e0-090e-39853ce2a38a}</Project>
       <Name>SteamVR</Name>
+    </ProjectReference>
+    <ProjectReference Include="SteamVR_Actions.csproj">
+      <Project>{829a2fbe-07f1-ce17-c519-961ae9964ce1}</Project>
+      <Name>SteamVR_Actions</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
       <Project>{88c40bb1-6914-39b8-b003-4373b0256ab4}</Project>

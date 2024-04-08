@@ -138,7 +138,7 @@ namespace Minecraft.Scripts
         IEnumerator EnablePlayer()
         {
             yield return new WaitForSeconds(5);
-            GameObject.FindGameObjectWithTag("Player").GetComponent<KeyboardInput>().enabled = true;
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerEntity>().enabled = true;
         }
 
         public override void LightBlock(int x, int y, int z, ModificationSource source)

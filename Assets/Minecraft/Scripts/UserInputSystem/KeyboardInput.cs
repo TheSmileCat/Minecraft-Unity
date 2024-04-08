@@ -1,32 +1,25 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Minecraft.Scripts.Configurations;
 using Minecraft.Scripts.Entities;
 using Minecraft.Scripts.PlayerControls;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using Task = UnityEditor.VersionControl.Task;
 
 namespace Minecraft.Scripts.UserInputSystem
 {
     [DisallowMultipleComponent]
     [RequireComponent(typeof(BlockInteraction))]
     [RequireComponent(typeof(FluidInteractor))]
-    public class KeyboardInput : Entity
+    public class KeyboardInput: MonoBehaviour, IUserInput
     {
         // ...fields of entity class
 
         [Space]
         [Header("Input")]
         [SerializeField] private InputActionAsset m_InputActions;
-
-        [Space]
-        [Header("Config")]
-        public float WalkSpeed;
-        public float RunSpeed;
-        public float FlyUpSpeed;
-        public float JumpHeight;
-        [SerializeField] private float m_StepInterval;
-        [SerializeField] [Range(0, 1)] private float m_RunstepLengthen;
 
         [Space]
 
@@ -48,10 +41,18 @@ namespace Minecraft.Scripts.UserInputSystem
         [NonSerialized] private InputAction m_FlyDownAction;
         [NonSerialized] private InputAction m_CursorStateAction;
 
+        private float WalkSpeed => m_PlayerEntity.WalkSpeed;
+        private float RunSpeed => m_PlayerEntity.RunSpeed;
+        private float FlyUpSpeed => m_PlayerEntity.FlyUpSpeed;
+        private float JumpHeight => m_PlayerEntity.JumpHeight;
+        private float StepInterval => m_PlayerEntity.StepInterval;
+        private float RunstepLengthen => m_PlayerEntity.RunstepLengthen;
+
         private Camera m_Camera;
         private Transform m_CameraTransform;
         private FluidInteractor m_FluidInteractor;
 
+        private PlayerEntity m_PlayerEntity;
         private Vector3 m_OriginalCameraPosition;
         private bool m_Jump;
         private bool m_FlyDown;
@@ -59,14 +60,18 @@ namespace Minecraft.Scripts.UserInputSystem
         private bool m_PreviouslyGrounded;
         private float m_StepCycle;
         private float m_NextStep;
+        private Transform m_Transform;
 
         private float m_LastTimePressW;
+        
+        private readonly TaskCompletionSource<bool> m_StartTask = new();
 
+        public Task<bool> StartTask => m_StartTask.Task;
 
-        protected override void Start()
+        private void Start()
         {
-            base.Start();
-
+            m_Transform = transform;
+            
             m_InputActions.Enable();
             m_MoveAction = m_InputActions["Player/Move"];
             // m_RunAction = m_InputActions["Player/Run"];
@@ -79,6 +84,7 @@ namespace Minecraft.Scripts.UserInputSystem
             m_Camera = GetComponentInChildren<Camera>();
             m_CameraTransform = m_Camera.GetComponent<Transform>();
             m_FluidInteractor = GetComponent<FluidInteractor>();
+            m_PlayerEntity = GetComponent<PlayerEntity>();
 
             m_FirstPersonLook.Initialize(m_Transform, m_CameraTransform, true);
             m_HeadBob.Initialize(m_CameraTransform);
@@ -95,10 +101,7 @@ namespace Minecraft.Scripts.UserInputSystem
             m_FlyAction.performed += SwitchFlyMode;
             m_FlyDownAction.performed += SwitchFlyDownMode;
             m_CursorStateAction.performed += SwitchCursorState;
-
-            BlockInteraction interaction = GetComponent<BlockInteraction>();
-            interaction.Initialize(m_Camera, this);
-            interaction.enabled = true;
+            m_StartTask.SetResult(true);
         }
 
         private void SwitchJumpMode(InputAction.CallbackContext context)
@@ -113,7 +116,7 @@ namespace Minecraft.Scripts.UserInputSystem
 
         private void SwitchFlyMode(InputAction.CallbackContext context)
         {
-            UseGravity = !UseGravity;
+            m_PlayerEntity.UseGravity = !m_PlayerEntity.UseGravity;
         }
 
         private void SwitchFlyDownMode(InputAction.CallbackContext context)
@@ -129,6 +132,7 @@ namespace Minecraft.Scripts.UserInputSystem
 
         private void Update()
         {
+            if (!m_PlayerEntity.enabled) return;
             // 在 Update 里读取输入。
             // 如果在 FixedUpdate 里读输入会出现丢失，
             // 因为 FixedUpdate 不是按实际帧率执行
@@ -136,7 +140,7 @@ namespace Minecraft.Scripts.UserInputSystem
 
             m_FirstPersonLook.LookRotation(m_LookAction.ReadValue<Vector2>(), Time.deltaTime);
 
-            bool isGrounded = GetIsGrounded(out BlockData groundBlock);
+            bool isGrounded = m_PlayerEntity.GetIsGrounded(out BlockData groundBlock);
 
             if (!m_PreviouslyGrounded && isGrounded)
             {
@@ -149,25 +153,27 @@ namespace Minecraft.Scripts.UserInputSystem
             m_PreviouslyGrounded = isGrounded;
         }
 
-        protected override void FixedUpdate()
+        private void FixedUpdate()
         {
+            if (!m_PlayerEntity.enabled) return;
             float speed = GetInput(out Vector2 input);
-            m_FluidInteractor.UpdateState(this, m_CameraTransform, out float vMultiplier);
+            // 运动受流体影响。
+            m_FluidInteractor.UpdateState(m_PlayerEntity, m_CameraTransform, out float vMultiplier);
 
             // always move along the camera forward as it is the direction that it being aimed at
             Vector3 velocity = m_Transform.forward * input.y + m_Transform.right * input.x;
             velocity = speed * vMultiplier * velocity.normalized;
 
-            if (UseGravity)
+            if (m_PlayerEntity.UseGravity)
             {
-                velocity.y = Velocity.y; // 不管 y 方向
+                velocity.y = m_PlayerEntity.Velocity.y; // 不管 y 方向
 
-                bool isGrounded = GetIsGrounded(out BlockData groundBlock);
+                bool isGrounded = m_PlayerEntity.GetIsGrounded(out BlockData groundBlock);
 
                 if (isGrounded && m_Jump)
                 {
                     // 向上跳起
-                    AddInstantForce(new Vector3(0, JumpHeight * Mass / Time.fixedDeltaTime, 0));
+                    m_PlayerEntity.AddInstantForce(new Vector3(0, JumpHeight * m_PlayerEntity.Mass / Time.fixedDeltaTime, 0));
                     PlayBlockStepSound(groundBlock);
                     // m_Jump = false;
                 }
@@ -189,18 +195,16 @@ namespace Minecraft.Scripts.UserInputSystem
             }
 
             // 施加力来调整速度
-            AddInstantForce((velocity - Velocity) * Mass / Time.fixedDeltaTime);
-
-            base.FixedUpdate(); // move
+            m_PlayerEntity.AddInstantForce((velocity - m_PlayerEntity.Velocity) * m_PlayerEntity.Mass / Time.fixedDeltaTime);
         }
 
         private void ProgressStepCycle(Vector2 input, float speed, bool isGrounded, BlockData blockUnderFeet)
         {
-            Vector3 velocity = Velocity;
+            Vector3 velocity = m_PlayerEntity.Velocity;
 
             if (velocity.sqrMagnitude > 0 && input != Vector2.zero)
             {
-                m_StepCycle += (Velocity.magnitude + (speed * (m_IsRunning ? m_RunstepLengthen : 1f))) * Time.fixedDeltaTime;
+                m_StepCycle += (velocity.magnitude + (speed * (m_IsRunning ? RunstepLengthen : 1f))) * Time.fixedDeltaTime;
             }
 
             if (m_StepCycle <= m_NextStep)
@@ -208,7 +212,7 @@ namespace Minecraft.Scripts.UserInputSystem
                 return;
             }
 
-            m_NextStep = m_StepCycle + m_StepInterval;
+            m_NextStep = m_StepCycle + StepInterval;
 
             if (isGrounded)
             {
@@ -219,15 +223,16 @@ namespace Minecraft.Scripts.UserInputSystem
         private void UpdateCameraPosition(float speed, bool isGrounded)
         {
             Vector3 newCameraPosition;
+            Vector3 velocity = m_PlayerEntity.Velocity;
 
             if (!m_HeadBob.Enabled)
             {
                 return;
             }
 
-            if (Velocity.sqrMagnitude > 0 && isGrounded)
+            if (velocity.sqrMagnitude > 0 && isGrounded)
             {
-                m_CameraTransform.localPosition = m_HeadBob.DoHeadBob(Velocity.magnitude + (speed * (m_IsRunning ? m_RunstepLengthen : 1f)), m_StepInterval, Time.fixedDeltaTime);
+                m_CameraTransform.localPosition = m_HeadBob.DoHeadBob(velocity.magnitude + (speed * (m_IsRunning ? RunstepLengthen : 1f)), StepInterval, Time.fixedDeltaTime);
                 newCameraPosition = m_CameraTransform.localPosition;
                 newCameraPosition.y = m_CameraTransform.localPosition.y - m_JumpBob.GetOffset();
             }
