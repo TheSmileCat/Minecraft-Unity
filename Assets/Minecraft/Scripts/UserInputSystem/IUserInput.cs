@@ -1,6 +1,8 @@
-﻿using System.Threading.Tasks;
-using UnityEditor.VersionControl;
-using UnityEngine;
+﻿#region
+
+using System.Threading.Tasks;
+
+#endregion
 
 namespace Minecraft.Scripts.UserInputSystem
 {
@@ -12,7 +14,7 @@ namespace Minecraft.Scripts.UserInputSystem
     /// 用户移动输入
     /// </summary>
     // public Vector2 AxisVector { get; }
-    
+
     public Task<bool> StartTask { get; }
   }
 }

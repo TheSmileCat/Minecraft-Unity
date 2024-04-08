@@ -1,22 +1,22 @@
-﻿using System;
-using Minecraft.Scripts.PlayerControls;
-using UnityEngine;
+﻿#region
+
 using System.Threading.Tasks;
+using Minecraft.Scripts.PlayerControls;
 using Minecraft.Scripts.UserInputSystem;
+using UnityEngine;
+
+#endregion
 
 namespace Minecraft.Scripts.Entities
 {
-  
   [DisallowMultipleComponent]
   [RequireComponent(typeof(KeyboardInput))]
   [RequireComponent(typeof(VirtualRealityInput))]
   public class PlayerEntity : Entity
   {
     private Camera m_Camera;
-    
-    [Space]
-    [Header("Config")]
-    public float WalkSpeed;
+
+    [Space] [Header("Config")] public float WalkSpeed;
     public float RunSpeed;
     public float FlyUpSpeed;
     public float JumpHeight;
@@ -36,18 +36,18 @@ namespace Minecraft.Scripts.Entities
       m_Camera = GetComponentInChildren<Camera>();
       m_KeyboardInput = GetComponent<KeyboardInput>();
       m_VirtualRealityInput = GetComponent<VirtualRealityInput>();
-      
+
       InteractionInit();
     }
 
     private async void InteractionInit()
     {
       Debug.Log("===> m_KeyboardInput.StartTask.Task!");
-      
+
       await Task.WhenAll(m_KeyboardInput.StartTask, m_VirtualRealityInput.StartTask);
-      
+
       Debug.Log("<=== m_KeyboardInput.StartTask.Task!");
-      
+
       var interaction = GetComponent<BlockInteraction>();
       interaction.Initialize(m_Camera, this);
       interaction.enabled = true;

@@ -1,4 +1,6 @@
 namespace Minecraft.Scripts.Lua
 {
-    public interface IHotfixable { }
+  public interface IHotfixable
+  {
+  }
 }

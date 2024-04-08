@@ -1,32 +1,36 @@
-﻿using System;
+﻿#region
+
+using System;
 using Minecraft.Scripts.Lua;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
+#endregion
+
 namespace Minecraft.Scripts.Assets
 {
-    public interface IAssetBundle : ILuaCallCSharp
-    {
-        string Name { get; }
+  public interface IAssetBundle : ILuaCallCSharp
+  {
+    string Name { get; }
 
-        bool IsStreamedSceneAssetBundle { get; }
+    bool IsStreamedSceneAssetBundle { get; }
 
-        IAssetBundle[] Dependencies { get; }
+    IAssetBundle[] Dependencies { get; }
 
-        int RefCount { get; }
+    int RefCount { get; }
 
-        bool IsLoadingDone { get; }
+    bool IsLoadingDone { get; }
 
-        void IncreaseRef();
+    void IncreaseRef();
 
-        void DecreaseRef();
+    void DecreaseRef();
 
-        bool UpdateLoadingState();
+    bool UpdateLoadingState();
 
-        AssetBundleRequest LoadAsset<T>(string name) where T : Object;
+    AssetBundleRequest LoadAsset<T>(string name) where T : Object;
 
-        AssetBundleRequest LoadAsset(string name, Type type);
+    AssetBundleRequest LoadAsset(string name, Type type);
 
-        void Unload(bool unloadAllLoadedObjects);
-    }
+    void Unload(bool unloadAllLoadedObjects);
+  }
 }

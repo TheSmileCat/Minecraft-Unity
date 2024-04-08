@@ -1,7 +1,10 @@
-﻿using System;
+﻿#region
+
 using System.Threading.Tasks;
 using UnityEngine;
 using Valve.VR;
+
+#endregion
 
 namespace Minecraft.Scripts.UserInputSystem
 {
